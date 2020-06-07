@@ -4,7 +4,10 @@ let selectedTerm = {
     day: undefined,
     hour: undefined,
     min: undefined,
-    FullDate: undefined
+    FullDate: undefined,
+    data: undefined,
+    proc: undefined,
+    det: undefined
 }
 
 let today = new Date();
@@ -33,6 +36,9 @@ function Summary() { //handles summary section
     // add EVH to form
     $('#summaryForm').on('submit', function () {
         // let formdata = $(this).serialize()
+        selectedTerm.data = $("#summaryForm-Data").val()
+        selectedTerm.proc = $("#summaryForm-Proc").val()
+        selectedTerm.det = $("#summaryForm-Details").val()
         let formdata = JSON.stringify(selectedTerm)
 
         console.log(formdata)
@@ -52,7 +58,7 @@ function Summary() { //handles summary section
         })
     }
 
-    if ($('#summaryForm-Proc').children().length == 0) { pasteProcs() }
+    if ($('#summaryForm-Proc').children().length == 1) { pasteProcs() }
 
     $('#summaryForm-month').val(getMonth(selectedTerm.month))
     $('#summaryForm-day').val(selectedTerm.day)
@@ -84,7 +90,7 @@ function TP(place) { //scroll page to selected element
 function getMonth(num) { //returns month name or false if passed num is not in range(0-11)
     switch (num) {
         case 0:
-            out = "Styczeń"
+            return "Styczeń"
         case 1:
             return "Luty"
         case 2:
