@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="src/css/style.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -72,26 +73,29 @@
                         <div class="Data">
                             <div class="MonthDay">
                                 <label class="form-summary-label"> Dzień / Miesiąc: </label>
-                                <input type="text" name="" id="summaryForm-day" class="form-control-summary">
-                                <input type="text" name="" id="summaryForm-month" class="form-control-summary">
+                                <input type="text" name="summaryFormDay" id="summaryForm-day"
+                                    class="form-control-summary">
+                                <input type="text" name="summaryFormMonth" id="summaryForm-month"
+                                    class="form-control-summary">
                             </div>
                             <div class="HourMin">
                                 <label class="form-summary-label">Godzina: </label>
-                                <input type="text" name="summary-hour" id="summaryForm-hour"
+                                <input type="text" name="summaryHour" id="summaryForm-hour"
                                     class="form-control-summary">
-                                <input type="text" name="summary-min" id="summaryForm-min" class="form-control-summary">
+                                <input type="text" name="summaryMin" id="summaryForm-min" class="form-control-summary">
                             </div>
                         </div>
                     </fieldset>
 
                     <label for="summary-dane">Imie i Nazwisko</label>
-                    <input type="text" name="summary-data" id="summaryForm-Data" class="form-control">
+                    <input type="text" name="summaryData" id="summaryForm-Data" required autocomplete="off"
+                        class="form-control">
 
                     <label for="summary-Proc">Zabieg</label>
-                    <select name="summary-Proc" id="summaryForm-Proc" class="custom-select"></select>
+                    <select name="summaryProc" id="summaryForm-Proc" class="custom-select"></select>
 
                     <label for="summary-dane">Uwagi</label>
-                    <textarea name="summary-details" id="summaryForm-Details" cols="30" rows="3"></textarea>
+                    <textarea name="summaryDetails" id="summaryForm-Details" cols="30" rows="3"></textarea>
 
                     <input type="submit" value="Rezerwuj" class="btn btn-primary">
                 </form>
@@ -103,15 +107,17 @@
         © Paweł Michalski
     </footer>
 
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    <script src="src/js/jquery-3.4.1.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-    <script src="calendar.js"></script>
+        crossorigin="anonymous"></script> -->
+    <script src="src/js/app.js"></script>
+    <script src="src/js/calendar.js"></script>
+    <script src="src/js/times.js"></script>
 </body>
 
 </html>
