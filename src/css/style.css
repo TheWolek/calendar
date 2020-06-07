@@ -23,6 +23,10 @@ table tr td:hover {
     cursor: pointer;
 }
 
+.today {
+    background: #17a2b8 !important;
+}
+
 .selected {
     background: var(--selected) !important;
 }
@@ -31,8 +35,12 @@ table tr td:hover {
     background: rgb(255, 153, 153) !important;
 }
 
-.today {
-    background: #17a2b8;
+#month {
+    width: 40%;
+}
+
+#year {
+    width: 25%;
 }
 
 .calendarContent, #Summary, #SelectMenu {

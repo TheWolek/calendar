@@ -44,7 +44,13 @@
                 </div>
                 <form class="form-line">
                     <label for="month" class="mt-2 mb-0" lead mr-2 ml-2">Jump To: </label>
-                    <select onchange="jump()" name="month" id="month" class="form-control col-sm-4"></select>
+                    <div class="d-flex">
+                        <select onchange="jump()" name="month" id="month" class="form-control"></select>
+                        <select onchange="jump()" name="year" id="year" class="form-control">
+                            <option value="2020" selected>2020</option>
+                            <option value="2021">2021</option>
+                        </select>
+                    </div>
                 </form>
             </div>
 

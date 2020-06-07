@@ -16,6 +16,7 @@ let currentYear = today.getFullYear(); //used to display current month at init
 
 //DOM obj
 let selectMonth = document.getElementById("month"); //select
+let selectYear = document.getElementById("year"); //select
 let monthAndYear = document.getElementById("monthAndYear"); //display
 
 //let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
