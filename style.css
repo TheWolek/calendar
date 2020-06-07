@@ -36,7 +36,7 @@ table tr td:hover {
 }
 
 .calendarContent, #Summary, #SelectMenu {
-    min-height: 100vh;
+    min-height: 85vh;
     padding-top: .8rem;
     margin-bottom: 2rem;
 }
@@ -46,7 +46,7 @@ table tr td:hover {
     margin-bottom: .4rem;
 }
 
-.SelectMenu-h {
+.SelectMenu-h, .Summary-h {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -117,10 +117,6 @@ footer {
     background: var(--Dark);
     text-align: center;
     color: var(--Light);
-    max-height: 20vh;
-}
-
-footer p {
-    padding: 2rem .8rem;
-    margin: 0;
+    height: 10vh;
+    padding: 1.2rem 0;
 }

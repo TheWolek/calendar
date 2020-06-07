@@ -3,7 +3,8 @@ let selectedTerm = {
     month: undefined,
     day: undefined,
     hour: undefined,
-    min: undefined
+    min: undefined,
+    FullDate: undefined
 }
 
 $(function () {
@@ -16,19 +17,10 @@ $(function () {
 })
 
 function pasteHours() {
-    let dayItem = $('#' + selectedTerm.day)
-    let ul = $('#Term-list')
-    ul.html('')
-
-    if (dayItem.hasClass('bg-red')) {
-        let item = document.createElement("p")
-        let itemText = document.createTextNode("W niedzielę i święta nie pracujemy. Wybierz proszę inny termin")
-        item.appendChild(itemText)
-        ul.append(item)
-    } else {
-        let hour = 9
+    function generateHours(hour, Time) {
+        //let hour = 9
         let min = 0
-        for (let i = 0; i <= 18; i++) {
+        for (let i = 0; i < Time * 2; i++) {
             let item = document.createElement("li");
             let itemText
             if (hour < 10) {
@@ -55,6 +47,22 @@ function pasteHours() {
 
             ul.append(item)
         }
+    }
+
+    //let dayItem = $('#' + selectedTerm.day)
+    let Weekday = selectedTerm.FullDate.getDay()
+    let ul = $('#Term-list')
+    ul.html('')
+    //  dayItem.hasClass('bg-red')
+    if (Weekday == 0) {
+        let item = document.createElement("p")
+        let itemText = document.createTextNode("W niedzielę i święta nie pracujemy. Wybierz proszę inny termin")
+        item.appendChild(itemText)
+        ul.append(item)
+    } else if (Weekday == 6) {
+        generateHours(9, 5)
+    } else {
+        generateHours(9, 9)
     }
 }
 

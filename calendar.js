@@ -25,11 +25,14 @@ function selectDay(day, month) {
         ifSun()
         selectedTerm.day = day
         selectedTerm.month = month
+        selectedTerm.FullDate = new Date(currentYear, month, day)
     } else {
         $('#' + selectedTerm.day).removeClass('selected')
         $('#' + selectedTerm.day).removeClass('selected-red')
         ifSun()
         selectedTerm.day = day
+        selectedTerm.month = month
+        selectedTerm.FullDate = new Date(currentYear, month, day)
     }
     $('#SelectMenu').css('display', 'block')
     showTerms()
