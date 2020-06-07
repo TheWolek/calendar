@@ -36,14 +36,18 @@ table tr td:hover {
 }
 
 .calendarContent, #Summary, #SelectMenu {
-    min-height: 85vh;
+    min-height: 75vh;
     padding-top: .8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+#Summary {
+    margin-bottom: 5rem;
 }
 
 .table-cover {
     height: 46vh;
-    margin-bottom: .4rem;
+    margin-bottom: 1.2rem;
 }
 
 .SelectMenu-h, .Summary-h {
@@ -102,7 +106,7 @@ textarea {
 }
 
 #summaryForm input[type="submit"] {
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 #summaryForm-day, #summaryForm-hour, #summaryForm-min {
@@ -113,10 +117,14 @@ fieldset {
     margin-bottom: .8rem !important;
 }
 
-footer {
+footer, header {
     background: var(--Dark);
     text-align: center;
     color: var(--Light);
     height: 10vh;
     padding: 1.2rem 0;
+}
+
+header h2 {
+    font-size: 22px;
 }
