@@ -44,7 +44,7 @@ table tr td:hover {
     width: 25%;
 }
 
-.calendarContent, #Summary, #SelectMenu {
+#calendarContent, #Summary, #SelectMenu, #Reservation {
     min-height: 75vh;
     padding-top: .8rem;
     margin-bottom: 1.2rem;
@@ -140,8 +140,53 @@ header h2 {
     font-size: 22px;
 }
 
+.details {
+    display: flex;
+    justify-content: center;
+}
+
+.R-left {
+    margin-right: 3rem;
+}
+
+.R-right {
+    border-left: 2px solid var(--dark);
+    padding-left: .8rem;
+}
+
+#Reservation {
+    margin-bottom: 2rem;
+}
+
+#Reservation h4 {
+    width: 100%;
+    text-align: center;
+}
+
+#notify {
+    position: fixed;
+    top: 2vh;
+    left: 5%;
+    width: 90%;
+    padding: .7rem;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+#notify span {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
 @media (min-width: 576px) {
-    .calendarContent, #SelectMenu, #Summary {
+    #calendarContent, #SelectMenu, #Summary, #Reservation {
         margin-left: auto;
         margin-right: auto;
         padding-top: 0;
@@ -155,7 +200,7 @@ header h2 {
 }
 
 @media (min-width: 992px) {
-    .calendarContent, #SelectMenu {
+    #calendarContent, #SelectMenu {
         padding: .8rem 0 0 0;
         margin: 0;
     }
@@ -166,7 +211,7 @@ header h2 {
 }
 
 @media (min-width: 1200px) {
-    .calendarContent {
+    #calendarContent {
         margin-left: auto;
         margin-right: auto;
         transition: .5s ease-in

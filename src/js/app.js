@@ -32,6 +32,48 @@ $(function () {
     showCalendar(currentMonth, currentYear);
 })
 
+function notify(msg, type) {
+    let className
+    let html = document.createElement("span")
+    let htmlMsg = document.createTextNode(msg)
+    html.appendChild(htmlMsg)
+
+    if (type == 1) {
+        className = "alert-success"
+    } else {
+        className = "alert-danger"
+    }
+
+    $("#notify").addClass(className)
+    $("#notify").append(html)
+    $("#notify").css("opacity", "1")
+
+    setTimeout(function () {
+        $("#notify").css("opacity", "0")
+        setTimeout(function () {
+            $("#notify").html('')
+        }, 1000)
+    }, 4000)
+}
+
+function Reservation() {
+    $("#calendarContent").css("display", "none")
+    $("#SelectMenu").css("display", "none")
+    $("#Summary").css("display", "none")
+    $("#Reservation").css("display", "block")
+
+    $("#data").html(selectedTerm.data)
+    $("#proc").html(selectedTerm.proc)
+    if (selectedTerm.det == '')
+        $(".det").css("display", "none")
+    else
+        $("#det").html(selectedTerm.data)
+
+    let date = selectedTerm.FullDate
+    $("#date").html(date.getFullYear() + " / " + (date.getMonth() + 1) + " / " + date.getDate())
+    let time = date.getHours() + " : " + date.getMinutes()
+    $("#hour").html(date.getMinutes() < 10 ? time += 0 : time)
+}
 
 function Summary() { //handles summary section
     // add EVH to form
@@ -42,7 +84,24 @@ function Summary() { //handles summary section
         selectedTerm.det = $("#summaryForm-Details").val()
         let formdata = JSON.stringify(selectedTerm)
 
-        console.log(formdata)
+        $.post("actions/addTerm.php", formdata)
+            .always(function () {
+                $('#summaryForm input[type="submit"]').attr("disabled", "disabled")
+            })
+            .done(function (data) {
+                console.log(JSON.parse(data))
+                data = JSON.parse(data)
+                if (data.status) {
+                    notify("pomyślnie zarezerwowano wizytę", 1)
+                } else {
+                    notify("wystąpił błąd", 0)
+                }
+
+                TP(0)
+            })
+            .fail(function (data) {
+
+            })
         return false;
     })
 
