@@ -1,7 +1,7 @@
 <?php
 $data = json_decode(file_get_contents('php://input'), true);
 // var_dump(date("Y-m-d h:i:s", strtotime($data["FullDate"]))); 
-$date = date("Y-m-d h:i:s", strtotime($data["FullDate"]));
+$date = date("Y-m-d H:i:s", strtotime($data["FullDate"]));
 $Name = strtolower($data["data"]);
 
 require("query.php");
