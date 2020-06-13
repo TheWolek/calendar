@@ -14,11 +14,11 @@ function pasteHours() {
             if (min == 0) {
                 min = 1
                 itemText = document.createTextNode(itemText + ":00")
-                item.setAttribute("id", hour + ":0")
+                item.setAttribute("id", hour + "0")
                 item.setAttribute("onClick", 'setTerm("' + hour + ':0")')
             } else {
                 min = 0
-                item.setAttribute("id", hour + ":3")
+                item.setAttribute("id", hour + "3")
                 item.setAttribute("onClick", 'setTerm("' + hour + ':3")')
                 hour++
                 itemText = document.createTextNode(itemText + ":30")
@@ -46,6 +46,40 @@ function pasteHours() {
     } else {
         generateHours(9, 9)
     }
+    findBusy()
+}
+
+function findBusy(date) {
+    $.post("actions/findTerms.php")
+        .always(() => {
+
+        })
+        .done((data) => {
+            data = JSON.parse(data)
+            console.log(data)
+            if (data.status) {
+                found = data.data
+                found.forEach((val, i) => {
+                    let date = val.date
+                    console.log(date)
+                    let hour = date.substr(11, 2)
+                    let min = date.substr(14, 1)
+                    date = hour + min
+                    $(function () {
+                        // $("#" + date).css("background", "var(--redColor)")
+                        $("#" + date).addClass("busy")
+                        $("#" + date).removeAttr("onclick")
+                    })
+
+                })
+
+            } else {
+
+            }
+        })
+        .fail((data) => {
+
+        })
 }
 
 function showTerms() {

@@ -37,6 +37,7 @@ function notify(msg, type) {
     let html = document.createElement("span")
     let htmlMsg = document.createTextNode(msg)
     html.appendChild(htmlMsg)
+    $("#notify").css("display", "block")
 
     if (type == 1) {
         className = "alert-success"

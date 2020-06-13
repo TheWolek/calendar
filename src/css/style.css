@@ -203,6 +203,11 @@ header h2 {
     background: rgba(129, 129, 129, 0.3);
 }
 
+.busy {
+    background: var(--redColor) !important;
+    filter: contrast(.75);
+}
+
 @media (min-width: 576px) {
     #calendarContent, #SelectMenu, #Summary, #Reservation {
         margin-left: auto;
