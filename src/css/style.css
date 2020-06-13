@@ -141,17 +141,22 @@ header h2 {
 }
 
 .details {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 5vh 5vh 6vh 5vh 5vh;
+    align-items: center;
+    padding: 2%;
+    border: 1px solid var(--Dark);
 }
 
-.R-left {
-    margin-right: 3rem;
+.details hr {
+    grid-column: 1 / 3;
+    border: 1px solid var(--Dark);
+    width: 100%;
 }
 
-.R-right {
-    border-left: 2px solid var(--dark);
-    padding-left: .8rem;
+#data, #proc, #det, #date, #hour {
+    font-weight: 600;
 }
 
 #Reservation {
@@ -183,6 +188,19 @@ header h2 {
     display: block;
     width: fit-content;
     margin: 0 auto;
+}
+
+#loader {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(.5);
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 98;
+    background: rgba(129, 129, 129, 0.3);
 }
 
 @media (min-width: 576px) {

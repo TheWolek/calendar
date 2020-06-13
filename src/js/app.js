@@ -64,10 +64,8 @@ function Reservation() {
 
     $("#data").html(selectedTerm.data)
     $("#proc").html(selectedTerm.proc)
-    if (selectedTerm.det == '')
-        $(".det").css("display", "none")
-    else
-        $("#det").html(selectedTerm.data)
+    selectedTerm.det == '' ? $("#det").html("Brak") : $("#det").html(selectedTerm.det)
+
 
     let date = selectedTerm.FullDate
     $("#date").html(date.getFullYear() + " / " + (date.getMonth() + 1) + " / " + date.getDate())
@@ -87,20 +85,29 @@ function Summary() { //handles summary section
         $.post("actions/addTerm.php", formdata)
             .always(function () {
                 $('#summaryForm input[type="submit"]').attr("disabled", "disabled")
+                $("#loader").css("display", "flex")
             })
             .done(function (data) {
-                console.log(JSON.parse(data))
+                //console.log(JSON.parse(data))
                 data = JSON.parse(data)
-                if (data.status) {
-                    notify("pomyślnie zarezerwowano wizytę", 1)
-                } else {
-                    notify("wystąpił błąd", 0)
-                }
+                console.log("test")
 
-                TP(0)
+                setTimeout(() => {
+                    if (data.status) {
+                        notify("pomyślnie zarezerwowano wizytę", 1)
+                        Reservation()
+                    } else {
+                        notify("wystąpił błąd", 0)
+                        $('#summaryForm input[type="submit"]').prop("disabled", false)
+                    }
+                    $("#loader").css("display", "none")
+                }, 1000)
+
+                if (data.status)
+                    TP(0)
             })
             .fail(function (data) {
-
+                console.log("no", data)
             })
         return false;
     })
@@ -134,12 +141,15 @@ function TP(place) { //scroll page to selected element
     }
     switch (place) {
         case 0:
-            TP_action("monthAndYear")
+            TP_action("Reservation")
             break;
         case 1:
-            TP_action("SelectMenu")
+            TP_action("monthAndYear")
             break;
         case 2:
+            TP_action("SelectMenu")
+            break;
+        case 3:
             TP_action("Summary")
             break;
         default:

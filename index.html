@@ -17,20 +17,32 @@
     </header>
     <div class="container col-12">
         <div class="row">
+            <div id="loader" style="display: none">
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
             <div id="notify" style="display: block"></div>
-            <div id="Reservation" class="col-12 col-sm-10 col-lg-6 col-xl-4">
+            <div id="Reservation" class="col-12 col-sm-10 col-lg-6 col-xl-4" style="display: none">
                 <h4>Twoja wizyta została zarejestrowana</h4>
                 <hr>
                 <div class="details">
-                    <div class="R-left">
-                        <div class="data">Imie i nazwisko: <span id="data"></span></div>
-                        <div class="proc">Zabieg: <span id="proc"></span></div>
-                        <div class="det">Uwagi: <span id="det"></span></div>
-                    </div>
-                    <div class="R-right">
-                        <div class="date">Data: <span id="date"></span></div>
-                        <div class="hour">Godzina: <span id="hour"></span></div>
-                    </div>
+                    <div class="data">Imie i nazwisko:</div>
+                    <div id="data"></div>
+
+                    <div class="proc">Zabieg:</div>
+                    <div id="proc"></div>
+
+                    <div class="det">Uwagi:</div>
+                    <div id="det"></div>
+
+                    <hr>
+
+                    <div class="date">Data:</div>
+                    <div id="date"></div>
+
+                    <div class="hour">Godzina:</div>
+                    <div id="hour"></div>
                 </div>
 
             </div>

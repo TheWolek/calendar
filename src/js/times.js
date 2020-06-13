@@ -73,7 +73,7 @@ function setTerm(hour) {
     if (free) {
         $('#Summary').css('display', 'block')
         Summary()
-        TP(2)
+        TP(3)
     } else {
         //else show notify
     }
