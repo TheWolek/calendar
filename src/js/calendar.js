@@ -88,7 +88,8 @@ function showCalendar(month, year) {
                 cell.setAttribute("id", date)
                 if (j == 0)
                     cell.classList.add("bg-red")
-                cell.setAttribute("onClick", "selectDay(" + date + ", " + month + ")")
+                if (date >= today.getDate() && year >= today.getFullYear() && month >= today.getMonth())
+                    cell.setAttribute("onClick", "selectDay(" + date + ", " + month + ")")
                 row.appendChild(cell);
                 date++;
             }
