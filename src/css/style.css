@@ -74,6 +74,7 @@ table tr td:hover {
 
 .list-group-item:hover {
     background: var(--selected);
+    border: 2px solid var(--Dark) !important;
 }
 
 .bg-red {

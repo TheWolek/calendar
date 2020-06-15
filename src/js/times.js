@@ -51,19 +51,18 @@ function pasteHours() {
 
 function findBusy() {
     let selectedDate = { date: selectedTerm.getFullDate("-") }
-    console.log(selectedDate)
+    //console.log(selectedDate)
     $.post("actions/findTerms.php", selectedDate)
         .always(() => {
 
         })
         .done((data) => {
             data = JSON.parse(data)
-            console.log(data)
+            //console.log(data)
             if (data.status) {
                 found = data.data
                 found.forEach((val, i) => {
                     let date = val.date
-                    console.log(date)
                     let hour = date.substr(11, 2)
                     let min = date.substr(14, 1)
                     date = hour + min
@@ -72,16 +71,27 @@ function findBusy() {
                         $("#" + date).addClass("busy")
                         $("#" + date).removeAttr("onclick")
                     })
-
                 })
-
-            } else {
-
             }
         })
         .fail((data) => {
 
         })
+
+    if (selectedTerm.FullDate.getFullYear() == today.getFullYear() && selectedTerm.FullDate.getMonth() == today.getMonth() && selectedTerm.FullDate.getDate() == today.getDate()) {
+        let hour = today.getHours()
+        let min = today.getMinutes()
+        let maxToDelete = min < 30 ? hour + "0" : (hour + 1) + "0"
+
+        $("#Term-list li").each((i, val) => {
+            if (parseInt($(val).attr("id")) <= parseInt(maxToDelete)) {
+
+                $(val).removeAttr("onclick")
+                $(val).css("filter", "contrast(.3)")
+            }
+        })
+
+    }
 }
 
 function showTerms() {
@@ -92,25 +102,14 @@ function showTerms() {
 }
 
 function setTerm(hour) {
-    let free = true
     hour = hour.split(":")
-    // let term = {
-    //     month: currentMonth,
-    //     day: selectedDay,
-    //     hour: hour[0],
-    //     min: hour[1] + "0"
-    // }
 
     selectedTerm.hour = hour[0]
     selectedTerm.min = hour[1] + "0"
 
     selectedTerm.FullDate = new Date(currentYear, selectedTerm.month, selectedTerm.day, selectedTerm.hour, selectedTerm.min)
     //console.log(JSON.parse(JSON.stringify(selectedTerm)))
-    if (free) {
-        $('#Summary').css('display', 'block')
-        Summary()
-        TP(3)
-    } else {
-        //else show notify
-    }
+    $('#Summary').css('display', 'block')
+    Summary()
+    TP(3)
 }
