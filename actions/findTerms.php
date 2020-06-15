@@ -1,7 +1,8 @@
 <?php 
 require("query.php");
+$date = $_POST["date"];
 
-$sql = "select id, date from terms where date like CONCAT('2020-06-15', '%')";
+$sql = "select id, date from terms where date like CONCAT('".$date."', '%')";
 if($result = DB_query($sql)) {
     $arr = [];
     while($row = $result->fetch_assoc()) {

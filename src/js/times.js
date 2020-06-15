@@ -49,8 +49,10 @@ function pasteHours() {
     findBusy()
 }
 
-function findBusy(date) {
-    $.post("actions/findTerms.php")
+function findBusy() {
+    let selectedDate = { date: selectedTerm.getFullDate("-") }
+    console.log(selectedDate)
+    $.post("actions/findTerms.php", selectedDate)
         .always(() => {
 
         })

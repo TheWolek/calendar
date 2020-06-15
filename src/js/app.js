@@ -7,7 +7,24 @@ let selectedTerm = {
     FullDate: undefined,
     data: undefined,
     proc: undefined,
-    det: undefined
+    det: undefined,
+
+    getFullDate: function (sep) {
+        let month, date
+        if (this.FullDate.getMonth() < 10) {
+            month = "0" + (this.FullDate.getMonth() + 1)
+        } else {
+            month = this.FullDate.getMonth() + 1
+        }
+
+        if (this.FullDate.getDate() < 10) {
+            date = "0" + this.FullDate.getDate()
+        } else {
+            date = this.FullDate.getDate()
+        }
+
+        return this.FullDate.getFullYear() + sep + month + sep + date
+    }
 }
 
 let today = new Date();
@@ -69,7 +86,8 @@ function Reservation() {
 
 
     let date = selectedTerm.FullDate
-    $("#date").html(date.getFullYear() + " / " + (date.getMonth() + 1) + " / " + date.getDate())
+    // $("#date").html(date.getFullYear() + " / " + (date.getMonth() + 1) + " / " + date.getDate())
+    $("#date").html(selectedTerm.getFullDate(" / "))
     let time = date.getHours() + " : " + date.getMinutes()
     $("#hour").html(date.getMinutes() < 10 ? time += 0 : time)
 }
